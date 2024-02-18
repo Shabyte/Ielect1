@@ -69,7 +69,10 @@ $adminAccount = new AdminAccount();
               echo "<td>" . $admin['course'] . "</td>";
               echo "<td>" . $admin['role'] . "</td>";
               echo "<td>" . $admin['status'] . "</td>";
-              // Add action buttons here if needed
+              echo "<td>";
+              echo "<a href=\"edit.admin.php?id=" . $admin['id'] . "\" class=\"btn btn-sm btn-primary\">Edit</a>";
+              echo "<a href=\"delete.admin.php?id=" . $admin['id'] . "\" class=\"btn btn-sm btn-danger\">Delete</a>";
+              echo "</td>";
               echo "</tr>";
           }
           ?>

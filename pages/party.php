@@ -21,7 +21,11 @@
     <div class="content container-fluid mw-100 border rounded shadow p-3">
     <div class="h4 mb-4 text-dark border-bottom border-danger">
       Party
-      </div>
+      </div><div id="electionActions" class="p-3">
+        <div class="d-grid d-md-block ">
+            <a href="./add.election.php" class="btn btn-primary bg-danger border-0 text-light"><i class="bi bi-plus-circle mr-1"></i>Add Party</a>
+        </div>
+    </div>
       <div class="row px-2">
         <table class="table table-striped table-bordered ">
           <thead class="thead text-light bg-danger">

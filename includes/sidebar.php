@@ -1,3 +1,75 @@
+<?php
+session_start(); // Start the session to access session variables
+
+// Check if the user is logged in and has the necessary role ( moderator)
+if (isset($_SESSION['role']) && $_SESSION['role'] == 'moderator') {
+    $dashboard_page = ""; 
+    $voter_page = ""; 
+    $history_page = "";
+    $report_page = "";
+
+    // Set the active class for the current page based on the URL
+    $currentPage = basename($_SERVER['PHP_SELF']);
+    switch ($currentPage) {
+        case 'dashboard.php':
+            $dashboard_page = "active";
+            break;
+        case 'voter.php':
+            $voter_page = "active";
+            break;
+        case 'history.php':
+            $history_page = "active";
+            break;
+        case 'report.php':
+            $report_page = "active";
+            break;
+    }
+}
+?>
+<?php
+// Check if the user is logged in and has the necessary role (sub-admin)
+if (isset($_SESSION['role']) && $_SESSION['role'] == 'sub-admin') {
+    $dashboard_page = ""; 
+    $voter_page = ""; 
+    $candidate_page = ""; 
+    $election_page = ""; 
+    $candidacy_page = "";
+    $party_page = ""; 
+    $position_page = "";
+    $history_page = ""; 
+
+    // Set the active class for the current page based on the URL
+    $currentPage = basename($_SERVER['PHP_SELF']);
+    switch ($currentPage) {
+        case 'dashboard.php':
+            $dashboard_page = "active";
+            break;
+        case 'voter.php':
+            $voter_page = "active";
+            break;
+        case 'candidate.php':
+            $candidate_page = "active";
+            break;
+        case 'election.php':
+            $election_page = "active";
+            break;
+        case 'candidacy.php':
+            $candidacy_page = "active";
+            break;
+        case 'party.php':
+            $party_page = "active";
+            break;
+        case 'position.php':
+            $position_page = "active";
+            break;
+        case 'history.php':
+            $history_page = "active";
+            break;
+    }
+}
+?>
+
+
 <div class="container-fluid">
   <div class="row">
     <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block sidebar shadow">
