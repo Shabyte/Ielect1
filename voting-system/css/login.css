@@ -1,0 +1,115 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-image: linear-gradient(rgba(233, 80, 80, 0.1),rgba(233, 80, 80, 0.1)), url("/images/bg.jpg");
+  background-repeat: no-repeat;
+  background-size: 1400px 1000px;
+  background-position: center;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+.back-link {
+    padding: 10px;
+    text-decoration: none;
+    color: black; /* Adjust the color as needed */
+  }
+  
+  .back-link i {
+   position: absolute;
+   top: 8px;
+   left: 16px;
+   margin-bottom: 20px;
+   margin-top: 20px;
+  }
+.login-container {
+  background-color: transparent;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.80);
+  width: 50px;
+  height: 400px;
+}
+
+.login-form {
+  max-width: 300px;
+  margin: 0 auto;
+}
+img{
+    height: 100px;
+    width: 100px;
+    display: block;
+    margin: 0 auto;
+    border-radius: 50px;
+    -webkit-box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 1);
+    -moz-box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 1);
+    box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 1);
+
+}
+
+h2 {
+  text-align: center;
+  color: #8B0000;
+  text-shadow: 2px 2px whitesmoke;
+}
+
+label {
+  display: block;
+  margin-top: 10px;
+  color: white;
+  text-shadow: 2px 2px #8B0000;
+}
+
+input {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 2px 2px #8B0000;
+  
+}
+
+button {
+    background-color: #8B0000;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 50%;
+    margin: 10% 25% 10%; 
+    box-shadow: 2px 2px #0E0C0A;
+  
+  }
+  
+
+button:hover {
+    background-color: transparent;
+    border-style: inset;
+    transition: 0.5s ease;
+    box-shadow: none;
+}
+
+/* Media queries for responsiveness */
+  
+@media (min-width:320px){
+  .login-container{
+    width: 60%;
+  }
+}
+@media (min-width: 600px) {
+  .login-container {
+    width: 60%;
+  }
+}
+
+@media (min-width: 900px) {
+  .login-container {
+    width: 30%;
+  }
+}
+

@@ -1,0 +1,224 @@
+body, html {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.custom-navbar {
+  background-color: #b50909;
+  padding: 1rem 0;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(199, 28, 28, 0.6);
+}
+
+.nav-container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: left;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.logo {
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
+  -webkit-box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 1);
+  -moz-box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 1);
+  box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 1);
+}
+
+.logo-text {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-shadow: 1px 1px black;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1rem;
+  font-weight: 700;
+  text-shadow: 1px 1px black;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  transition: 0.3s ease;
+}
+
+.nav-link:hover {
+  text-decoration: underline;
+  line-height: 1.5;
+  text-underline-offset: 20%;
+  text-decoration-color: whitesmoke;
+  background-color: transparent; 
+  color: black;
+  text-shadow: none;
+}
+.active{
+  text-decoration: none;
+  background-color: transparent; 
+  color: black;
+  text-shadow: none; 
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+}
+.active:hover {
+  text-decoration: underline;
+  line-height: 1.5;
+  text-underline-offset: 20%;
+  text-decoration-color: black;
+  color: white;
+  text-shadow: none;
+}
+
+.user-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%; 
+}
+  
+ .arrow{
+  margin: 15px 10px 10px 10px;
+ }
+ .background-text{
+  color: #b50909;
+  margin: 10px 5px 5px 50px ;
+  text-shadow: 1px 1px #b50909;
+ }
+ .profiling{
+  display: flex;
+  gap: 10px;
+ }
+ .profile-image img{
+  margin-left: 50px;
+  width: 200px;
+  height: 200px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+ }
+ .profile-info h2{
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+ }
+ .profile-info-2 {
+  display: flex;
+  justify-content: space-evenly;
+  margin-left: 100px; 
+ }
+
+ .profile-info-2 h3{
+  color: darkblue;
+  display: flex;
+  margin-left: 10px;
+  margin-bottom: 20px;
+ }
+
+ .profile-info-3 {
+  display: flexbox;
+  align-items: stretch;
+  justify-content: space-evenly;
+  margin-left: 150px; 
+ }
+
+ .profile-info-3 h3{
+  margin-left: 10px;
+  margin-bottom: 20px;
+ }
+ .container-profile-main{
+  margin: 20px 20px 50px 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+ }
+ .container-of-two{
+  display: flex;
+  flex-direction: column;
+ }
+.container-profile-profile{
+  align-items: center;
+  justify-content: center;
+  border: 1px solid black;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  width: 600px;
+  height: 150px;
+}
+.container-profile-profile h4{
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ color: #b50909;
+ margin-top: 5px;
+}
+.container-profile-profile-2{
+  border: 1px solid black;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  width: 500px;
+  height: 451px;
+  margin-right: 50px;
+}
+.container-profile-profile-2 h2{
+  color: #b50909;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5px;
+}
+.platform{
+  display: flex;
+  align-items: center;
+}
+.platform img{
+  width: 100px;
+  height: 100px;
+  margin-left: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+.platform-2{
+  display: flex;
+  align-items: center;
+}
+.platform-2 img{
+  width: 50px;
+  height: 50px;
+  margin-left: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+.container-profile-profile-3{
+  align-items: center;
+  justify-content: center;
+  border: 1px solid black;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  height: 300px;
+  width: 600px;
+  margin-top: 10px;
+}
+.container-profile-profile-3 h4{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #b50909;
+  margin-top: 5px;
+ }
+

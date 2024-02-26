@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 16, 2024 at 04:30 PM
+-- Generation Time: Feb 26, 2024 at 09:28 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -36,15 +36,16 @@ CREATE TABLE `adminusers` (
   `course` varchar(255) DEFAULT NULL,
   `status` enum('online','offline') NOT NULL DEFAULT 'offline',
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `deleted_at` tinyint(4) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `adminusers`
 --
 
-INSERT INTO `adminusers` (`id`, `user_id`, `username`, `role`, `department`, `course`, `status`, `created_at`, `updated_at`) VALUES
-(1, 0, 'osa', '', 'CCS', 'ccit', 'online', '2024-02-13 19:13:31', '2024-02-13 19:13:31');
+INSERT INTO `adminusers` (`id`, `user_id`, `username`, `role`, `department`, `course`, `status`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 0, 'osa', 'superadmin', 'CCS', 'ccit', 'online', '2024-02-13 19:13:31', '2024-02-18 16:27:20', NULL);
 
 -- --------------------------------------------------------
 
@@ -54,13 +55,24 @@ INSERT INTO `adminusers` (`id`, `user_id`, `username`, `role`, `department`, `co
 
 CREATE TABLE `candidacy` (
   `id` int(11) NOT NULL,
-  `election_id` int(11) NOT NULL,
-  `start_time` datetime NOT NULL,
-  `end_time` datetime NOT NULL,
+  `election_title` varchar(255) NOT NULL,
+  `start_time` time NOT NULL,
+  `end_time` time NOT NULL,
   `status` enum('pending','active','completed') NOT NULL DEFAULT 'pending',
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `start_date` date DEFAULT NULL,
+  `end_date` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `candidacy`
+--
+
+INSERT INTO `candidacy` (`id`, `election_title`, `start_time`, `end_time`, `status`, `created_at`, `updated_at`, `start_date`, `end_date`) VALUES
+(3, 'OSA', '00:00:00', '18:00:00', 'pending', '2024-02-26 20:12:11', '2024-02-26 20:12:11', '2024-02-01', '2024-02-05'),
+(1, 'WMSU Election', '00:00:00', '00:00:00', 'pending', '2024-02-26 19:32:34', '2024-02-26 19:32:34', '2024-02-27', '2024-02-27'),
+(2, 'WMSU Election2', '08:00:00', '15:00:00', 'pending', '2024-02-26 19:55:48', '2024-02-26 19:55:48', '2024-12-15', '2024-12-15');
 
 -- --------------------------------------------------------
 
@@ -91,7 +103,8 @@ CREATE TABLE `candidate_list` (
   `position_id` int(11) NOT NULL,
   `status` enum('approved','pending','rejected') NOT NULL DEFAULT 'pending',
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `picture` blob DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -103,14 +116,38 @@ CREATE TABLE `candidate_list` (
 CREATE TABLE `election` (
   `id` int(11) NOT NULL,
   `election_title` varchar(255) NOT NULL,
+  `school_year` varchar(255) NOT NULL,
+  `semester` enum('1st semester','2nd semester') NOT NULL,
   `date_start` date NOT NULL,
   `date_end` date NOT NULL,
   `time_start` time NOT NULL,
   `time_end` time NOT NULL,
   `status` enum('pending','active','completed') NOT NULL DEFAULT 'pending',
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `election`
+--
+
+INSERT INTO `election` (`id`, `election_title`, `school_year`, `semester`, `date_start`, `date_end`, `time_start`, `time_end`, `status`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 'sad', '1212121', '1st semester', '0000-00-00', '0000-00-00', '12:22:00', '12:12:00', 'pending', '2024-02-26 16:38:25', '2024-02-26 16:38:25', NULL),
+(2, 'WMSU Election', '2024', '1st semester', '2024-02-27', '2024-02-27', '08:00:00', '20:00:00', 'pending', '2024-02-26 16:55:06', '2024-02-26 16:55:06', NULL);
+
+--
+-- Triggers `election`
+--
+DELIMITER $$
+CREATE TRIGGER `soft_delete_trigger` BEFORE UPDATE ON `election` FOR EACH ROW BEGIN
+    IF NEW.deleted_at IS NOT NULL THEN
+        SET NEW.updated_at = CURRENT_TIMESTAMP();
+        SET NEW.deleted_at = CURRENT_TIMESTAMP();
+    END IF;
+END
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -180,14 +217,14 @@ CREATE TABLE `users` (
 
 CREATE TABLE `voters` (
   `id` int(11) NOT NULL,
-  `picture` blob DEFAULT NULL,
   `user_id` int(11) NOT NULL,
   `first_name` varchar(255) NOT NULL,
   `last_name` varchar(255) NOT NULL,
   `course` varchar(255) NOT NULL,
   `department` varchar(255) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `contact_number` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -219,7 +256,8 @@ ALTER TABLE `adminusers`
 -- Indexes for table `candidacy`
 --
 ALTER TABLE `candidacy`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`election_title`),
+  ADD KEY `id` (`id`) USING BTREE;
 
 --
 -- Indexes for table `candidates`
@@ -298,7 +336,7 @@ ALTER TABLE `adminusers`
 -- AUTO_INCREMENT for table `candidacy`
 --
 ALTER TABLE `candidacy`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `candidates`
@@ -316,7 +354,7 @@ ALTER TABLE `candidate_list`
 -- AUTO_INCREMENT for table `election`
 --
 ALTER TABLE `election`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `election_history`

@@ -1,7 +1,14 @@
 <?php
-$title = 'Admin-Account';
+$title = 'Election';
 $election_page = 'active';
 require_once("../includes/admin.head.php");
+require_once("../classes/election.class.php");
+
+// Instantiate the Election class
+$electionObj = new Election();
+
+// Fetch elections from the database
+$elections = $electionObj->getElections();
 ?>
 
 <!-- sidebar -->
@@ -29,13 +36,16 @@ require_once("../includes/admin.head.php");
       <!-- add election btn -->
       <div class="card">
       <div class="table-responsive">
-        <table class="table table-striped table-bordered" id="election">
+        <table class="table table-striped table-bordered" id="election" >
           <thead class="thead text-light bg-danger">
             <tr>
               <th>Id</th>
-              <th>Time</th>
-              <th>Start time</th>
-              <th>End time</th>
+              
+              <th>Election</th>
+              <th>Date start</th>
+              <th>Date end</th>
+              <th>Time Start</th>
+              <th>Time end</th>
               <th>School year</th>
               <th>Semester</th>
               <th>Status</th>
@@ -44,11 +54,57 @@ require_once("../includes/admin.head.php");
           </thead>
           <tbody id="electionTableBody">
          
-
+          <?php foreach ($elections as $election): ?>
+              <tr>
+                <td><?php echo $election['id']; ?></td>
+                <td><?php echo $election['election_title']; ?></td>
+                <td><?php echo $election['date_start']; ?></td>
+                <td><?php echo $election['date_end']; ?></td>
+                <td><?php echo $election['time_start']; ?></td>
+                <td><?php echo $election['time_end']; ?></td>
+                <td><?php echo $election['school_year']; ?></td>
+                <td><?php echo $election['semester']; ?></td>
+                <td><?php echo $election['status']; ?></td>
+                <td>
+                    <a href="edit.election.php?id=<?php echo $election['id']; ?>" class="btn btn-sm btn-primary">Edit</a>
+                    <a href="delete.election.php?id=<?php echo $election['id']; ?>" class="btn btn-sm btn-danger">Delete</a>
+                </td>
+              </tr>
+            <?php endforeach; ?>
           </tbody>
         </table>
       </div>
     </div>
+    
+   <!-- Pagination -->
+<nav aria-label="Page navigation" class="pt-2 d-flex justify-content-end">
+  <ul class="pagination">
+    <!-- Previous Page Link -->
+    <li class="page-item <?php echo $currentPage == 1 ? 'disabled' : ''; ?>">
+      <a class="page-link" href="?page=<?php echo $currentPage - 1; ?>" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+        <span class="sr-only">Previous</span>
+      </a>
+    </li>
+
+    <!-- Pagination Elements -->
+    <?php for($i = 1; $i <= $totalPages; $i++): ?>
+      <li class="page-item <?php echo $currentPage == $i ? 'active' : ''; ?>">
+        <a class="page-link" href="?page=<?php echo $i; ?>"><?php echo $i; ?></a>
+      </li>
+    <?php endfor; ?>
+
+    <!-- Next Page Link -->
+    <li class="page-item <?php echo $currentPage == $totalPages ? 'disabled' : ''; ?>">
+      <a class="page-link" href="?page=<?php echo $currentPage + 1; ?>" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+        <span class="sr-only">Next</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+<!-- End Pagination -->
+
   </div>
 </div>
 

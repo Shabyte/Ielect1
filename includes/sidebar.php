@@ -104,38 +104,60 @@ if (isset($_SESSION['role']) && $_SESSION['role'] == 'sub-admin') {
         <li class="nav-item">
             <a href="../pages/candidate.php" class="<?= $candidate_page ?>">
                 <i class='bx bxs-user-detail'></i>
+                <span class="item">Candidate</span>
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a href="../pages/candidate-list.php" class="<?= $candidate_list_page ?>">
+                <i class='bx bxs-user-detail'></i>
                 <span class="item">Candidate list</span>
             </a>
         </li>
+        <div class="accordion flush " id="sidebarMenu">
+            <div class="accordion-item">
+                <h4 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseElection" aria-expanded="false" aria-controls="collapseElection">
+                    <span class="item"><i class='bx bx-cog'></i>Election</span>
+                </button>
+                </h4>
+                    <div id="collapseElection" class="accordion-collapse collapse" aria-labelledby="headingElection" data-bs-parent="#sidebarMenu">
+                    <div class="accordion-body">
+                        <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a href="../pages/election.php" class="<?= $election_page ?>">
+                                <i class="bi bi-receipt-cutoff"></i>
+                                <span class="item">Election</span>
+                            </a>
+                        </li>
 
-        <li class="nav-item">
-            <a href="../pages/election.php" class="<?= $election_page ?>">
-                <i class="bi bi-receipt-cutoff"></i>
-                <span class="item">Election</span>
-            </a>
-        </li>
-        
-        <li class="nav-item">
-            <a href="../pages/candidacy.php" class="<?= $candidacy_page ?>" >
-                <i class="bi bi-archive-fill"></i>
-                <span class="item">Candidacy</span>
-            </a>
-        </li>
+                        <li class="nav-item">
+                            <a href="../pages/candidacy.php" class="<?= $candidacy_page ?>" >
+                                <i class="bi bi-archive-fill"></i>
+                                <span class="item">Candidacy</span>
+                            </a>
+                        </li>
 
-        <li class="nav-item">
-            <a href="../pages/party.php" class="<?= $party_page ?>">
-                <i class='bx bxs-parking'></i>
-                <span class="item">Party</span>
-            </a>
-        </li>
+                        <li class="nav-item">
+                            <a href="../pages/party.php" class="<?= $party_page ?>">
+                                <i class='bx bxs-parking'></i>
+                                <span class="item">Party</span>
+                            </a>
+                        </li>
 
-        <li class="nav-item">
-            <a href="../pages/position.php" class="<?= $position_page ?>">
-                <i class="bi bi-flag-fill"></i>
-                <span class="item">Position</span>
-            </a>
-        </li>
-
+                        <li class="nav-item">
+                            <a href="../pages/position.php" class="<?= $position_page ?>">
+                                <i class="bi bi-flag-fill"></i>
+                                <span class="item">Position</span>
+                            </a>
+                        </li>
+                        <!-- Add more election-related links here if needed -->
+                        </ul>
+                    </div>
+                    </div>
+            </div>
+        </div>
+       
         <li class="nav-item">
             <a href="../pages/history.php" class="<?= $history_page ?>">
                 <i class="bi bi-file-earmark-bar-graph-fill"></i>
@@ -149,6 +171,7 @@ if (isset($_SESSION['role']) && $_SESSION['role'] == 'sub-admin') {
                 <span class="item">Reports</span>
             </a>
         </li>
+        
         </ul>
     </nav>
 </div>

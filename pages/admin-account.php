@@ -60,22 +60,21 @@ $adminAccount = new AdminAccount();
           <?php
           // Fetch all admins and display in the table
           $admins = $adminAccount->getAllAdmins();
-          foreach ($admins as $admin) {
-              echo "<tr>";
-              echo "<td>" . $admin['id'] . "</td>";
-              echo "<td>" . $admin['user_id'] . "</td>";
-              echo "<td>" . $admin['username'] . "</td>";
-              echo "<td>" . $admin['department'] . "</td>";
-              echo "<td>" . $admin['course'] . "</td>";
-              echo "<td>" . $admin['role'] . "</td>";
-              echo "<td>" . $admin['status'] . "</td>";
-              echo "<td>";
-              echo "<a href=\"edit.admin.php?id=" . $admin['id'] . "\" class=\"btn btn-sm btn-primary\">Edit</a>";
-              echo "<a href=\"delete.admin.php?id=" . $admin['id'] . "\" class=\"btn btn-sm btn-danger\">Delete</a>";
-              echo "</td>";
-              echo "</tr>";
-          }
-          ?>
+          foreach ($admins as $admin): ?>
+              <tr>
+                <td><?php echo $admin['id']; ?></td>
+                <td><?php echo $admin['user_id']; ?></td>
+                <td><?php echo $admin['username']; ?></td>
+                <td><?php echo $admin['department']; ?></td>
+                <td><?php echo $admin['course']; ?></td>
+                <td><?php echo $admin['role']; ?></td>
+                <td><?php echo $admin['status']; ?></td>
+                <td>
+                    <a href="edit.admin.php?id=<?php echo $admin['id']; ?>" class="btn btn-sm btn-primary">Edit</a>
+                    <a href="delete.admin.php?id=<?php echo $admin['id']; ?>" class="btn btn-sm btn-danger">Delete</a>
+                </td>
+              </tr>
+            <?php endforeach; ?>
         </tbody>
       </table>
     </div>

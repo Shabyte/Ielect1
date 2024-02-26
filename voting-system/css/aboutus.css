@@ -1,0 +1,214 @@
+/* Custom styles */
+body, html {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.custom-navbar {
+    background-color: #b50909; /* Custom red color */
+    padding: 1rem 0;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(199, 28, 28, 0.6);
+}
+
+.nav-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: left;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.logo {
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    -webkit-box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 1);
+    -moz-box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 1);
+    box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 1);
+}
+
+.logo-text {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-shadow: 1px 1px black;
+}
+
+.nav-links {
+    display: flex;
+    gap: 1rem;
+    font-weight: 700;
+    text-shadow: 1px 1px black;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    transition: 0.3s ease;
+}
+
+.nav-link:hover {
+    text-decoration: underline;
+    line-height: 1.5;
+    text-underline-offset: 20%;
+    text-decoration-color: whitesmoke;
+    color: black;
+    text-shadow: none;
+}
+.active-4{
+    text-decoration: none;
+    background-color: transparent; 
+    color: black;
+    text-shadow: none; 
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+}
+.active-4:hover {
+    text-decoration: underline;
+    line-height: 1.5;
+    text-underline-offset: 20%;
+    text-decoration-color: black;
+    color: white;
+    text-shadow: none;
+}
+
+.user-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%; /* Makes it round */
+}
+
+.main-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    gap: 2rem;
+    min-height: calc(100vh - 4rem); /* Adjust height considering navbar */
+}
+
+.card {
+    background-color: #f7d7d7; /* Custom light pink color */
+    border-radius: 1rem;
+    width: 15rem;
+    height: 15rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card-title {
+    color: #ad2831; /* Custom dark pink/red color */
+    font-size: 2rem;
+    font-weight: bold;
+}
+/* Add these styles to your existing CSS file */
+
+.team-section {
+    background-color: white; /* Or any other color as per the design */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.grid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.team-member {
+    background-color: #fff; /* Or any other color as per the design */
+    padding: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px rgba(218, 15, 15, 0.5);
+    margin-bottom: 1rem;
+}
+
+.team-member-image {
+    width: 100px;
+    height: 100px;
+    background-color: #b50909; /* Custom red color */
+    border-radius: 50%;
+    margin: 0 auto 1rem;
+    display: block;
+}
+
+.team-member-name {
+    font-size: 1.25rem;
+    color: #333;
+    margin-bottom: 0.25rem;
+}
+
+.team-member-role {
+    font-size: 1rem;
+    color: #555;
+}
+
+/* Responsive grid columns */
+@media (min-width: 768px) {
+    .grid-cols-1 {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .md:grid-cols-2 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .lg:grid-cols-3 {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .team-member-name {
+        font-size: 1rem;
+    }
+
+    .team-member-role {
+        font-size: 0.875rem;
+    }
+}
+
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .nav-container {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .nav-links, .user-icon {
+        display: none; /* Hide nav links and user icon on small screens */
+    }
+
+    .main-content {
+        flex-direction: column;
+    }
+
+    .card {
+        width: 90%; /* Full width on small screens */
+        height: auto; /* Auto height for flexible content */
+        margin-bottom: 2rem;
+    }
+}

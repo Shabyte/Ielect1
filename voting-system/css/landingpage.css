@@ -1,0 +1,89 @@
+.diagonal1{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-top: 50vh solid #8B0000;
+  border-right: 50vw solid transparent;
+}
+.wmsulogo img{
+  display: inline;
+  position: absolute;
+  height: 80px;
+  width: 80px;
+  z-index: 10;
+  margin: 20px 20px;
+  border-radius: 50px;
+  -webkit-box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 1);
+  -moz-box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 1);
+  box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 1);
+}
+.logo2{
+  color: aliceblue;
+  display: flex;
+  position: absolute;
+  z-index: 10;
+  margin: 30px 120px;
+  text-shadow:2px 2px black ;
+}
+.paragraph{
+  text-align: center;
+  z-index: 10;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.paragraph h1{
+  color: #8B0000;
+  text-shadow: 1px 1px black;
+  text-transform: capitalize;
+  font-weight: bold;
+  font-size: 2.5rem;
+  border-style: inset;
+}
+.paragraph p{
+  font-size: 1.5em;
+  font-weight: bold;
+  color: gray;
+  text-shadow: 1px 1px black;
+}
+button{
+  background-color: #8B0000;
+    color: #fff;
+    border: none;
+    padding: 8px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 12px;
+    border-style: inset;
+}
+button:hover{
+  color: gray;
+  background-color: transparent;
+  border-style: inset;
+  transition: 0.5s ease;
+  box-shadow: none;
+}
+
+.diagonal2{
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  border-bottom: 50vh solid #8B0000;
+  border-left: 50vw solid transparent;
+}
+.background{
+  height: 90vh;
+  width: 200vh;
+  display: flex;
+  align-items: center;
+ justify-content: center;
+ background-repeat: no-repeat;
+ background-position: fixed; 
+}

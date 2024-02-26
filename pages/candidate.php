@@ -3,7 +3,6 @@
   $candidate_page = 'active';
   require_once("../includes/admin.head.php"); 
   ?>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 
   <!-- sidebar -->
@@ -32,8 +31,6 @@
               <th>Position</th>
               <th>Division</th>
               <th>Party</th>
-              <th>Requirement</th>
-              <th> Portfolio</th>
               <th>Action</th>
             </tr>
           </thead>

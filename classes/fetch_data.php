@@ -32,7 +32,7 @@ class FetchData {
             return $row['total_voted'];
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
-            return 0; // Return 0 if there's an error
+            return 0;
         }
     }
 }

@@ -2,6 +2,12 @@
 $title = 'Voters list';
 $voter_page = 'active';
 require_once("../includes/admin.head.php");
+require_once("../classes/voter.class.php");
+
+// Create an instance of VoterManager
+$voterManager = new VoterManager();
+// Get voters data from the database
+$votersArray = $voterManager->getVotersArray();
 ?>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -25,24 +31,23 @@ require_once("../includes/admin.head.php");
 
         <div class="row px-3">
             <div class="table-responsive">
-
-                <div class="container ">
-                    <form action="/your_backend_upload_handler.php" method="post" enctype="multipart/form-data" class="mb-2">
-                        <div class="mb-3">
-                            <label for="csvFile" class="form-label">Choose a CSV file:</label>
-                            <input type="file" class="form-control" id="csvFile" name="csvFile" accept=".csv">
+           
+            <form action="/your_backend_upload_handler.php" method="post" enctype="multipart/form-data" class="mb-2">
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <input type="file" class="form-control" id="csvFile" name="csvFile" accept=".csv, .xls, .xlsx, .xlsm, .xlsb, .xml, .ods, .prn, .txt, .tab">
                         </div>
-                        <div>
+                        <div class="col-md-6">
                             <button type="submit" class="btn btn-primary">Upload</button>
                         </div>
-                    </form>
-
-                    <!-- Search bar -->
-
-                    <!-- Search bar -->
-
+                    </div>
                 </div>
+            </form>
 
+
+          
+        
                 <table id="voter" class="table table-bordered">
                     <thead class="thead text-light">
                         <tr class="table-light">
@@ -52,6 +57,7 @@ require_once("../includes/admin.head.php");
                             <th>Student name</th>
                             <th>Department & Course </th>
                             <th>QR Code</th>
+                            <th>Contact#</th>
                             <th>OTP</th>
                             <th>Online Status</th>
                             <th>Vote Status</th>
@@ -60,24 +66,24 @@ require_once("../includes/admin.head.php");
                     </thead>
                     <tbody>
                         <?php
-                        if ($votersArray) {
-                            foreach ($votersArray as $item) {
-                                $fullName = ucfirst($item['last_name']) . ', ' . ucfirst($item['first_name']);
-                                $deptcourse = ucfirst($item['department']) . ', ' . ucfirst($item['course']);
-                                ?>
-                                <tr>
-                                    <td><?= $counter ?></td>
-                                    <td><?= $item['email'] ?></td>
-                                    <td><?= $item['user_id'] ?></td>
-                                    <td><?= $fullName ?></td>
-                                    <td><?= $deptcourse?></td>
-                                    <td><?= ucfirst($item['online_status']) ?></td>
-                                    <td><?= ucfirst($item['vote_status']) ?></td>
-                                    <td class="text-center"><a href="position.php?id=<?= $item['id'] ?>"><i class="bi bi-pencil-square"></i></a></td>
-                                </tr>
-                                <?php
-                                $counter++;
-                            }
+                        $counter = 1;
+                        foreach ($votersArray as $item) {
+                            $fullName = ucfirst($item['last_name']) . ', ' . ucfirst($item['first_name']);
+                            $deptcourse = ucfirst($item['department']) . ', ' . ucfirst($item['course']);
+                            ?>
+                            <tr>
+                                <td><?= $counter ?></td>
+                                <td><?= $item['email'] ?></td>
+                                <td><?= $item['user_id'] ?></td>
+                                <td><?= $fullName ?></td>
+                                <td><?= $deptcourse ?></td>
+                                <td><?= $contact_number  ?></td>
+                                <td><?= ucfirst($item['online_status']) ?></td>
+                                <td><?= ucfirst($item['vote_status']) ?></td>
+                                <td class="text-center"><a href="position.php?id=<?= $item['id'] ?>"><i class="bi bi-pencil-square"></i></a></td>
+                            </tr>
+                            <?php
+                            $counter++;
                         }
                         ?>
                     </tbody>
@@ -88,4 +94,3 @@ require_once("../includes/admin.head.php");
 </div>
 
 <?php require_once("../includes/footer.php"); ?>
-

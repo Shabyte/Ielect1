@@ -50,7 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
         <div class="mb-3">
             <label for="password" class="visually-hidden">Password</label>
-            <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
+            <input type="password" class="form-control" id="password" name="password" placeholder="Password" required minlength="8" maxlength="8">
         </div>
         <button type="submit" class="btn btn-primary">Login</button>
         <?php
