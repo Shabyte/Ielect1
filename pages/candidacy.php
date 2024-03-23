@@ -25,7 +25,7 @@ require_once("../classes/candidacy.class.php");
         </div>
         <div id="electionActions" class="p-3">
             <div class="d-grid d-md-block ">
-                <a href="./add.candidacy.php" class="btn btn-primary bg-danger border-0 text-light">
+                <a href="add.candidacy.php" class="btn btn-primary bg-danger border-0 text-light">
                 <i class="bi bi-plus-circle mr-1"></i>Add Candidacy</a>
             </div>
         </div>

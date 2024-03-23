@@ -6,6 +6,18 @@ require_once("../classes/admin.class.php");
 
 // Initialize the AdminAccount class
 $adminAccount = new AdminAccount();
+
+//fetched the total number of records from your database
+$totalRecords = $adminAccount->countAllAdmins(); // Or any method you use to get the total number of admins
+
+// Define the number of records to display per page
+$recordsPerPage = 10; // You can adjust this value according to your needs
+
+// Calculate the total number of pages
+$totalPages = ceil($totalRecords / $recordsPerPage);
+
+// Initialize currentPage variable
+$currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
 ?>
 
 <!-- sidebar -->
@@ -47,7 +59,8 @@ $adminAccount = new AdminAccount();
         <thead class="thead text-light bg-danger">
           <tr>
             <th>id</th>
-            <th>User id</th>
+            <th>Admin id</th>
+            <th>Password</th>
             <th>Admin User</th>
             <th>Department</th>
             <th>Course</th>
@@ -63,7 +76,8 @@ $adminAccount = new AdminAccount();
           foreach ($admins as $admin): ?>
               <tr>
                 <td><?php echo $admin['id']; ?></td>
-                <td><?php echo $admin['user_id']; ?></td>
+                <td><?php echo $admin['admin_id']; ?></td>
+                <td><?php echo $admin['password']; ?></td>
                 <td><?php echo $admin['username']; ?></td>
                 <td><?php echo $admin['department']; ?></td>
                 <td><?php echo $admin['course']; ?></td>
@@ -78,6 +92,12 @@ $adminAccount = new AdminAccount();
         </tbody>
       </table>
     </div>
+
+   <!-- Pagination -->
+    
+    <!-- End Pagination -->
+
+
   </div>
 </div>
 

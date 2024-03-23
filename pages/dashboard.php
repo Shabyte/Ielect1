@@ -5,8 +5,10 @@ require_once("../includes/admin.head.php");
 require_once("../classes/fetch_data.php");
 
 // Fetch total voters and total voted
+$total_admins = FetchData::getTotalAdmin();
 $total_voters = FetchData::getTotalVoters();
 $total_voted = FetchData::getTotalVoted();
+
 // $username = $_SESSION['username'];
 ?>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -42,6 +44,21 @@ $total_voted = FetchData::getTotalVoted();
 
       <div class="row justify-content-center">
         <!-- Center the cards -->
+        <div class="col-md-6 col-lg-4 mb-3">
+        <div class="card p-3 mb-2">
+            <div class="d-flex justify-content-between">
+                <div class="d-flex flex-row align-items-center">
+                    <div class="ms-2 c-details">
+                        <h6 class="mb-0">Admin</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-3 mt-md-2">
+                <h5 class="heading"><?php echo $total_admins; ?></h5>
+                <p class="text-muted">Total Admin</p>
+            </div>
+        </div>
+        </div>
         <div class="col-md-6 col-lg-4 mb-3">
         <div class="card p-3 mb-2">
             <div class="d-flex justify-content-between">

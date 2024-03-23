@@ -23,7 +23,7 @@
       Party
       </div><div id="electionActions" class="p-3">
         <div class="d-grid d-md-block ">
-            <a href="./add.election.php" class="btn btn-primary bg-danger border-0 text-light"><i class="bi bi-plus-circle mr-1"></i>Add Party</a>
+            <a href="./add.party.php" class="btn btn-primary bg-danger border-0 text-light"><i class="bi bi-plus-circle mr-1"></i>Add Party</a>
         </div>
     </div>
       <div class="row px-2">

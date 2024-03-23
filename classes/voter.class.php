@@ -35,5 +35,32 @@ class VoterManager {
             return []; // Return an empty array in case of error
         }
     }
+
+    public function insertVoter($student_id, $email, $first_name, $last_name, $course, $department, $contact_number) {
+        try {
+            // Prepare SQL statement for inserting a new voter
+            $stmt = $this->connection->prepare("INSERT INTO voters (student_id, email, first_name, last_name, course, department, contact_number) VALUES (:student_id, :email, :first_name, :last_name, :course, :department, :contact_number)");
+            
+            // Bind parameters and execute the statement
+            $stmt->bindParam(':student_id', $student_id);
+            $stmt->bindParam(':email', $email);
+            $stmt->bindParam(':first_name', $first_name);
+            $stmt->bindParam(':last_name', $last_name);
+            $stmt->bindParam(':course', $course);
+            $stmt->bindParam(':department', $department);
+            $stmt->bindParam(':contact_number', $contact_number);
+            
+            // Execute the SQL statement
+            $stmt->execute();
+
+            // Return true if insertion was successful
+            return true;
+        } catch(PDOException $e) {
+            // Handle database query error
+            echo "Error: " . $e->getMessage();
+            return false; // Return false if insertion failed
+        }
+    }
+    
 }
 ?>

@@ -7,7 +7,7 @@ require_once('../includes/admin.head.php');
 require_once('../classes/account.class.php');
 
 // Check if user is already logged in
-if(isset($_SESSION['user_id'])) {
+if(isset($_SESSION['username'])) {
     // Redirect to dashboard or another page
     header("Location: dashboard.php");
     exit();
@@ -30,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($error)) {
         $userAccount = new UserAccount(); 
         if ($userAccount->ifUsernameExists($username) && $userAccount->verifyPassword($username, $password)) {
-            $_SESSION['user_id'] = $username;
+            $_SESSION['username'] = $username;
             header("Location: dashboard.php");
             exit();
         } else {

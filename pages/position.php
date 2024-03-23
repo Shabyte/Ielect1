@@ -33,28 +33,7 @@
           </thead>
         </table>
         <tbody>
-        <!-- <?php
-          $result = $db->query("SELECT * FROM voters ORDER BY last_name DESC");
-
-          if ($result->num_rows > 0) {
-              while ($row = $result->fetch_assoc()) {
-                  ?>
-                  <tr>
-                    <td><?php echo $row['voter_id ']; ?></td>
-                    <td><?php echo $row['last_name ']; ?></td>
-                    <td><?php echo $row['first_name ']; ?></td>
-                    <td><?php echo $row['course ']; ?></td>
-                    <td><?php echo $row['status ']; ?></td>
-
-                  </tr>
-                  <?php
-              }
-          }else{
-            ?>
-
-            <?php
-          }
-        ?> -->
+       
 
         </tbody>
       </div>

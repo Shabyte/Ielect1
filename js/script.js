@@ -44,26 +44,33 @@
 
 // add admin 
 // Generate username and admin ID based on department and course
-document.getElementById('department').addEventListener('change', function() {
-    generateUsernameAndAdminID();
+document.addEventListener('DOMContentLoaded', function() {
+  // Call the function initially to generate values
+  generateUsernameAndAdminID();
+
+  // Add event listeners for department and course dropdowns
+  document.getElementById('department').addEventListener('change', function() {
+      generateUsernameAndAdminID();
+  });
+
+  document.getElementById('course').addEventListener('change', function() {
+      generateUsernameAndAdminID();
+  });
+
+  // Function to generate username and admin ID
+  function generateUsernameAndAdminID() {
+      const department = document.getElementById('department').value;
+      const course = document.getElementById('course').value;
+
+      const username = department + '_' + course;
+      document.getElementById('userName').value = username;
+
+      // Ensure that the admin ID field is populated with the correct value
+      const adminID = 'ADM_' + Math.floor(1000 + Math.random() * 9000);
+      document.getElementById('admin_id').value = adminID;
+  }
 });
 
-document.getElementById('course').addEventListener('change', function() {
-    generateUsernameAndAdminID();
-});
-
-function generateUsernameAndAdminID() {
-    const department = document.getElementById('department').value;
-    const course = document.getElementById('course').value;
-
-    const username = department + '_' + course;
-
-    document.getElementById('userName').value = username;
-
-    const adminID = 'ADM_' + Math.floor(1000 + Math.random() * 9000);
-
-    document.getElementById('adminID').value = adminID;
-}
 
 
 

@@ -18,14 +18,16 @@ require_once("../includes/admin.head.php");
     <div class="content px-3 container-fluid mw-100 border rounded shadow p-3">
         <div class="card">
             <div class="card-body">
+            <a href="admin-account.php" class="btn"><i class='bx bxs-left-arrow left-arrow-icon'></i></a>
         <h2 class="text-center">Add Admin</h2>
 
-        <form id="adminForm" action="process_admin.php" method="post">
+        <form id="adminForm" action="process.admin.php" method="post">
+            
             <div class="form-group">
                 <div class="row">
                     <div class="col-md-6">
-                        <label for="adminID">AdminID:</label>
-                        <input type="text" class="form-control" id="adminID" name="adminID" required>
+                        <label for="admin_id">AdminID:</label>
+                        <input type="text" class="form-control" id="admin_id" name="admin_id" required>
                     </div>
                     <div class="col-md-6">
                         <label for="userName">UserName:</label>
@@ -43,8 +45,10 @@ require_once("../includes/admin.head.php");
                     <div class="col-md-6">
                         <label for="department">Department:</label>
                         <select class="form-control" id="department" name="department" required>
-                            <option value="IT">Information Technology</option>
+                            <option value="Information Technology">Information Technology</option>
                             <option value="CS">Computer Science</option>
+                            <option value="CL">College Of Law</option>
+                            <option value="CN">College Of Nursing</option>
                             <!-- Add more options as needed -->
                         </select>
                     </div>
@@ -56,8 +60,9 @@ require_once("../includes/admin.head.php");
                     <div class="col-md-6">
                         <label for="course">Course:</label>
                         <select class="form-control" id="course" name="course">
-                            <option value="CSE">Computer Science and Engineering</option>
+                            <option value="Computer Science and Engineering">Computer Science and Engineering</option>
                             <option value="ITM">Information Technology Management</option>
+                            <option value="CL">College Of Law</option>
                             <!-- Add more options as needed -->
                         </select>
                     </div>

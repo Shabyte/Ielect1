@@ -1,6 +1,6 @@
 <?php
   $title = 'Candidate';
-  $candidate_page = 'active';
+  $candidate_list_page = 'active';
   require_once("../includes/admin.head.php"); 
   ?>
 

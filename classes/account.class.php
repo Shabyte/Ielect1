@@ -10,7 +10,7 @@ class UserAccount {
     }
 
     function ifUsernameExists($username) {
-        $sql = "SELECT * FROM users WHERE username = :username;";
+        $sql = "SELECT * FROM adminusers WHERE username = :username;";
         $query = $this->db->connect()->prepare($sql);
         $query->bindParam(':username', $username, PDO::PARAM_STR);
         $query->execute();
@@ -18,8 +18,8 @@ class UserAccount {
         return $query->rowCount() > 0;
     }
 
-    function verifyPassword($username, $password_hash) {
-        $sql = "SELECT * FROM users WHERE username = :username;";
+    function verifyPassword($username, $password) {
+        $sql = "SELECT * FROM adminusers WHERE username = :username;";
         $query = $this->db->connect()->prepare($sql);
         $query->bindParam(':username', $username, PDO::PARAM_STR);
         $query->execute();
@@ -29,7 +29,7 @@ class UserAccount {
             // Fetch user data
             $user = $query->fetch(PDO::FETCH_ASSOC);
             // Verify password
-            if(password_verify($password_hash, $user['password_hash'])) {
+            if(password_verify($password, $user['password'])) {
                 return true; // Username and password match
             }
         }

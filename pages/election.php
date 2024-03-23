@@ -60,13 +60,13 @@ $elections = $electionObj->getElections();
                 <td><?php echo $election['election_title']; ?></td>
                 <td><?php echo $election['date_start']; ?></td>
                 <td><?php echo $election['date_end']; ?></td>
-                <td><?php echo $election['time_start']; ?></td>
-                <td><?php echo $election['time_end']; ?></td>
+                <td><?php echo date('h:i A', strtotime($election['time_start'])); ?></td>
+                <td><?php echo date('h:i A', strtotime($election['time_end'])); ?></td>
                 <td><?php echo $election['school_year']; ?></td>
                 <td><?php echo $election['semester']; ?></td>
                 <td><?php echo $election['status']; ?></td>
                 <td>
-                    <a href="edit.election.php?id=<?php echo $election['id']; ?>" class="btn btn-sm btn-primary">Edit</a>
+                    <a href="edit_election.php?id=<?php echo $election['id']; ?>" class="btn btn-sm btn-primary">Edit</a>
                     <a href="delete.election.php?id=<?php echo $election['id']; ?>" class="btn btn-sm btn-danger">Delete</a>
                 </td>
               </tr>

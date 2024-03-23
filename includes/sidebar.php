@@ -36,7 +36,9 @@ if (isset($_SESSION['role']) && $_SESSION['role'] == 'sub-admin') {
     $candidacy_page = "";
     $party_page = ""; 
     $position_page = "";
-    $history_page = ""; 
+    $history_page = "";
+    $candidate_list_page = "";
+    
 
     // Set the active class for the current page based on the URL
     $currentPage = basename($_SERVER['PHP_SELF']);
@@ -49,6 +51,9 @@ if (isset($_SESSION['role']) && $_SESSION['role'] == 'sub-admin') {
             break;
         case 'candidate.php':
             $candidate_page = "active";
+            break;
+        case 'candidate-list.php':
+            $candidate_list_page = "active";
             break;
         case 'election.php':
             $election_page = "active";
