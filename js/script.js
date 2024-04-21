@@ -70,7 +70,3 @@ document.addEventListener('DOMContentLoaded', function() {
       document.getElementById('admin_id').value = adminID;
   }
 });
-
-
-
-

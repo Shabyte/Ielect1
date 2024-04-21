@@ -7,7 +7,7 @@ require_once("../includes/admin.head.php");
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <!-- sidebar -->
-<?php require_once("../includes/sidebar.php"); ?>
+<?php require_once("./mod.sidebar.php"); ?>
 <!-- end sidebar -->
 
 <div class="section">
@@ -20,21 +20,6 @@ require_once("../includes/admin.head.php");
   <!-- main content -->
   <div class="content px-3 px-md-5">
     <div class="container mt-3 mt-md-5 mb-3">
-      <div class="form-group">
-        <label for="school_year">School Year:</label>
-        <select class="form-control" name="school_year" required>
-          <?php
-          // Get the current year
-          $currentYear = date("Y");
-
-          // Loop through years starting from the current year and going back 10 years
-          for ($i = $currentYear; $i >= $currentYear - 10; $i--) {
-            // Print each year as an option
-            echo "<option value=\"$i\">$i</option>";
-          }
-          ?>
-        </select>
-      </div>
 
       <div class="row justify-content-center">
         <!-- Center the cards -->

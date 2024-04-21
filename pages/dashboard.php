@@ -1,4 +1,5 @@
 <?php
+
 $title = 'Dashboard';
 $dashboard_page = 'active';
 require_once("../includes/admin.head.php");

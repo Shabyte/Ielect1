@@ -21,7 +21,7 @@ $votersArray = $voterManager->getVotersArray($recordsPerPage, $offset);
 ?>
 
 <!-- sidebar -->
-<?php require_once("../includes/sidebar.php"); ?>
+<?php require_once("./mod.sidebar.php"); ?>
 <!-- end sidebar -->
 
 <!-- navbar -->
@@ -36,18 +36,7 @@ $votersArray = $voterManager->getVotersArray($recordsPerPage, $offset);
         <div class="h4 mb-4 text-dark border-bottom border-danger">
             Voter's List
         </div>
-        <form action="csvhandler.php" method="post" enctype="multipart/form-data" class="mb-2">
-            <div class="form-group">
-                <div class="row">
-                    <div class="col-md-6">
-                        <input type="file" class="form-control" id="csvFile" name="csvFile" accept=".csv, .xls, .xlsx, .xlsm, .xlsb, .xml, .ods, .prn, .txt, .tab">
-                    </div>
-                    <div class="col-md-6">
-                        <button type="submit" class="btn btn-primary">Upload</button>
-                    </div>
-                </div>
-            </div>
-        </form>
+       
         <div class="row px-2">
       <table class="table table-striped table-bordered">
         <thead class="thead text-light bg-danger">
@@ -57,6 +46,8 @@ $votersArray = $voterManager->getVotersArray($recordsPerPage, $offset);
                             <th>Email</th>
                             <th>Student name</th>
                             <th>Department & Course </th>
+                            <th>QR Code</th>
+                            <th>OTP</th>
                             <th>Contact#</th>
                             <th>Online Status</th>
                             <th>Vote Status</th>
@@ -76,6 +67,13 @@ $votersArray = $voterManager->getVotersArray($recordsPerPage, $offset);
                                 <td><?= $item['email'] ?></td>
                                 <td><?= $fullName ?></td>
                                 <td><?= $deptcourse ?></td>
+                                <td><?= $item['qr_code'] ?></td>
+                                <td><?= $item['otp'] ?>
+                                <form action="../includes/send_otp.php" method="POST">
+                                    <input type="hidden" name="voter_id" value="<?= $item['id'] ?>">
+                                    <button type="submit" class="btn btn-primary">Send OTP</button>
+                                </form>
+                                </td>
                                 <td><?= $item['contact_number'] ?></td>
                                 <td><?= $item['online_status'] ?></td>
                                 <td><?= $item['vote_status'] ?></td>

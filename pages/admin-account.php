@@ -60,7 +60,6 @@ $currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
           <tr>
             <th>id</th>
             <th>Admin id</th>
-            <th>Password</th>
             <th>Admin User</th>
             <th>Department</th>
             <th>Course</th>
@@ -77,7 +76,6 @@ $currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
               <tr>
                 <td><?php echo $admin['id']; ?></td>
                 <td><?php echo $admin['admin_id']; ?></td>
-                <td><?php echo $admin['password']; ?></td>
                 <td><?php echo $admin['username']; ?></td>
                 <td><?php echo $admin['department']; ?></td>
                 <td><?php echo $admin['course']; ?></td>
